@@ -39,8 +39,10 @@ class TestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             result = int(data_string) ** 2
         except:
             result = 'error'
-        self.wfile.write(result)
-
+        try:
+         self.wfile.write(result)
+        except TypeError:
+         self.wfile.write(bytes(result))
 
 def open_browser():
     """Start a browser after waiting for half a second."""
