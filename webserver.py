@@ -30,7 +30,10 @@ class TestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
     def do_POST(self):
         """Handle a post request by returning the square of the number."""
-        length = int(self.headers.getheader('content-length'))
+        try:
+         length = int(self.headers.getheader('content-length'))
+        except AttributeError:
+         length = int(self.headers.get('content-length'))
         data_string = self.rfile.read(length)
         try:
             result = int(data_string) ** 2
