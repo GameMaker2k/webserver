@@ -14,12 +14,12 @@ import webbrowser
 
 pyoldver = True;
 try:
- import BaseHTTPServer
- import SimpleHTTPServer
+    import BaseHTTPServer
+    import SimpleHTTPServer
 except ImportError:
- import http.server as SimpleHTTPServer
- import http.server as BaseHTTPServer
- pyoldver = False;
+    import http.server as SimpleHTTPServer
+    import http.server as BaseHTTPServer
+    pyoldver = False;
 
 FILE = 'frontend.html'
 PORT = 8080
