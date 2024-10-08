@@ -37,7 +37,7 @@ class TestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         data_string = self.rfile.read(length)
         try:
             result = int(data_string) ** 2
-        except:
+        except BaseException:
             result = 'error'
         try:
             self.wfile.write(result)
@@ -59,7 +59,7 @@ def start_server():
     server = BaseHTTPServer.HTTPServer(server_address, TestHandler)
     try:
         server.serve_forever()
-    except(KeyboardInterrupt):
+    except (KeyboardInterrupt):
         pass
 
 
